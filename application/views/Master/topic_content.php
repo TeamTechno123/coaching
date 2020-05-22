@@ -17,7 +17,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 text-left mt-2">
-            <h4>Topic Content Information</h4>
+            <h4>Download Content Information</h4>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
               <div class="col-md-12">
                 <div class="card card-default">
                   <div class="card-header">
-                    <h5 class="card-title f-16"> Add New Topic Content</h5>
+                    <h5 class="card-title f-16"> Add New Download Content</h5>
                   </div>
                   <form class="m-0 input_form" id="form_action" role="form" action="" method="post">
                     <div class="card-body row">

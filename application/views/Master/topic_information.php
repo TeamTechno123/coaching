@@ -100,9 +100,8 @@
                               <input type="text" class="form-control form-control-sm" name="publish_date" id="publish_date" value="" placeholder="Publish Date & Time" required>
                             </td>
                             <td class="">
-                              <input type="text" class="form-control form-control-sm" name="key_point" id="key_point" value="" placeholder="Key Learing Point in this video" required>
-                            </td>
-
+                              <textarea class="form-control form-control-sm" name="name" rows="3" cols="80"></textarea>
+                          </td>
                             <td class="wt_50"></td>
                           </tr>
                         </tbody>
@@ -170,8 +169,8 @@
         '<input type="text" class="form-control form-control-sm" name="publish_date" id="publish_date" value="" placeholder="Publish Date & Time" required>'+
       '</td>'+
       '<td class="">'+
-        '<input type="text" class="form-control form-control-sm" name="key_point" id="key_point" value="" placeholder="Key Learing Point in this video" required>'+
-      '</td>'+
+        '<textarea class="form-control form-control-sm" name="name" rows="3" cols="80"></textarea>'+
+    '</td>'+
       '<td class="wt_50"><a class="rem_row"><i class="fa fa-trash text-danger"></i></a></td>'+
     '</tr>';
     $('#myTable').append(row);
