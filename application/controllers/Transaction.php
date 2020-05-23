@@ -4,8 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Transaction extends CI_Controller{
   public function __construct(){
     parent::__construct();
-    $this->load->model('User_Model');
-    $this->load->model('Transaction_Model');
     date_default_timezone_set('Asia/Kolkata');
   }
 
@@ -13,11 +11,11 @@ class Transaction extends CI_Controller{
 
   // Task List...
   public function task_information_list(){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
-    $data['task_list'] = $this->User_Model->get_list($crm_company_id,'task_id','DESC','task');
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
+    $data['task_list'] = $this->User_Model->get_list($coach_company_id,'task_id','DESC','task');
 
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
@@ -27,10 +25,10 @@ class Transaction extends CI_Controller{
 
   //Add Stock
   public function task_information(){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
 
     $this->form_validation->set_rules('task_name', 'Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
@@ -38,9 +36,9 @@ class Transaction extends CI_Controller{
       if(!isset($task_status)){ $task_status = 1; }
 
       $save_data = $_POST;
-      $save_data['company_id'] = $crm_company_id;
+      $save_data['company_id'] = $coach_company_id;
       $save_data['task_status'] = $task_status;
-      $save_data['task_addedby'] = $crm_user_id;
+      $save_data['task_addedby'] = $coach_user_id;
       $save_data['task_date'] = date('d-m-Y');
       $save_data['task_time'] = date('h:i:s A');
 
@@ -65,10 +63,10 @@ class Transaction extends CI_Controller{
 
   // Edit/Update Task...
   public function edit_task($task_id){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
 
     $this->form_validation->set_rules('task_name', 'Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
@@ -77,7 +75,7 @@ class Transaction extends CI_Controller{
 
       $update_data = $_POST;
       $update_data['task_status'] = $task_status;
-      $update_data['task_addedby'] = $crm_user_id;
+      $update_data['task_addedby'] = $coach_user_id;
       $update_data['task_date'] = date('d-m-Y');
       $update_data['task_time'] = date('h:i:s A');
 
@@ -107,10 +105,10 @@ class Transaction extends CI_Controller{
 
   // Delete Task...
   public function delete_task($task_id){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
     $this->User_Model->delete_info('task_id', $task_id, 'task');
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'Transaction/task_information_list');
@@ -121,11 +119,11 @@ class Transaction extends CI_Controller{
 
   // Ticket Information List...
   public function ticket_information_list(){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
-    $data['ticket_list'] = $this->User_Model->get_list($crm_company_id,'ticket_id','DESC','ticket');
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
+    $data['ticket_list'] = $this->User_Model->get_list($coach_company_id,'ticket_id','DESC','ticket');
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
     $this->load->view('Transaction/ticket_information_list',$data);
@@ -134,23 +132,23 @@ class Transaction extends CI_Controller{
 
   //Add Ticket Information
   public function ticket_information(){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
 
     $this->form_validation->set_rules('ticket_no', 'Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $save_data = $_POST;
-      $save_data['company_id'] = $crm_company_id;
-      $save_data['ticket_addedby'] = $crm_user_id;
+      $save_data['company_id'] = $coach_company_id;
+      $save_data['ticket_addedby'] = $coach_user_id;
       $save_data['ticket_date2'] = date('d-m-Y');
       $save_data['ticket_time2'] = date('h:i:s A');
       $this->User_Model->save_data('ticket', $save_data);
       $this->session->set_flashdata('save_success','success');
       header('location:'.base_url().'Transaction/ticket_information_list');
     }
-    $data['ticket_no'] = $this->User_Model->get_count_no($crm_company_id, 'ticket_no', 'ticket');
+    $data['ticket_no'] = $this->User_Model->get_count_no($coach_company_id, 'ticket_no', 'ticket');
     $data['party_list'] = $this->User_Model->get_list_by_id('party_status',1,'','','party_id','ASC','party');
     $data['ticket_status_list'] = $this->User_Model->get_list_by_id('ticket_status_status',1,'','','ticket_status_id','ASC','ticket_status');
     $data['ticket_priority_list'] = $this->User_Model->get_list_by_id('ticket_priority_status',1,'','','ticket_priority_id','ASC','ticket_priority');
@@ -168,15 +166,15 @@ class Transaction extends CI_Controller{
 
   // Edit / Update Ticket....
   public function edit_ticket($ticket_id){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
 
     $this->form_validation->set_rules('ticket_no', 'Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $update_data = $_POST;
-      $update_data['ticket_addedby'] = $crm_user_id;
+      $update_data['ticket_addedby'] = $coach_user_id;
       $update_data['ticket_date2'] = date('d-m-Y');
       $update_data['ticket_time2'] = date('h:i:s A');
       $this->User_Model->update_info('ticket_id', $ticket_id, 'ticket', $update_data);
@@ -207,10 +205,10 @@ class Transaction extends CI_Controller{
 
   // Delete Ticket...
   public function delete_ticket($ticket_id){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
     $this->User_Model->delete_info('ticket_id', $ticket_id, 'ticket');
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'Transaction/ticket_information_list');
@@ -220,11 +218,11 @@ class Transaction extends CI_Controller{
 
   // Issue List...
   public function lead_information_list(){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
-    $data['lead_list'] = $this->User_Model->get_list_by_id('company_id',$crm_company_id,'','','lead_id','DESC','lead');
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
+    $data['lead_list'] = $this->User_Model->get_list_by_id('company_id',$coach_company_id,'','','lead_id','DESC','lead');
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
     $this->load->view('Transaction/lead_information_list',$data);
@@ -233,17 +231,17 @@ class Transaction extends CI_Controller{
 
   //Add Stock
   public function lead_information(){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
 
     $this->form_validation->set_rules('lead_no', 'Type', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $save_data = $_POST;
       unset($save_data['input']);
-      $save_data['company_id'] = $crm_company_id;
-      $save_data['lead_addedby'] = $crm_user_id;
+      $save_data['company_id'] = $coach_company_id;
+      $save_data['lead_addedby'] = $coach_user_id;
       $save_data['lead_date2'] = date('d-m-Y');
       $save_data['lead_time2'] = date('h:i:s A');
       $lead_id = $this->User_Model->save_data('lead', $save_data);
@@ -257,7 +255,7 @@ class Transaction extends CI_Controller{
       header('location:'.base_url().'Transaction/lead_information_list');
     }
 
-    $data['lead_no'] = $this->User_Model->get_count_no($crm_company_id, 'lead_no', 'lead');
+    $data['lead_no'] = $this->User_Model->get_count_no($coach_company_id, 'lead_no', 'lead');
     $data['party_type_list'] = $this->User_Model->get_list2('party_type_id','ASC','party_type');
     $data['country_list'] = $this->User_Model->get_list2('country_name','ASC','country');
     $data['state_list'] = $this->User_Model->get_list2('','ASC','state');
@@ -280,16 +278,16 @@ class Transaction extends CI_Controller{
 
   // Edit / Update Lead...
   public function edit_lead($lead_id){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
 
     $this->form_validation->set_rules('lead_no', 'Type', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $update_data = $_POST;
       unset($update_data['input']);
-      $update_data['lead_addedby'] = $crm_user_id;
+      $update_data['lead_addedby'] = $coach_user_id;
       $update_data['lead_date2'] = date('d-m-Y');
       $update_data['lead_time2'] = date('h:i:s A');
 
@@ -343,10 +341,10 @@ class Transaction extends CI_Controller{
 
   // Delete Lead....
   public function delete_lead($lead_id){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
     $this->User_Model->delete_info('lead_id', $lead_id, 'lead');
     $this->User_Model->delete_info('lead_id', $lead_id, 'lead_child');
     $this->session->set_flashdata('delete_success','success');
@@ -356,11 +354,11 @@ class Transaction extends CI_Controller{
 /****************************************************** Project Contract Information ***************************************/
 
   public function project_contract_list(){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
-    $data['project_contract_list'] = $this->User_Model->get_list_by_id('company_id',$crm_company_id,'','','pro_cont_id','DESC','project_contract');
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
+    $data['project_contract_list'] = $this->User_Model->get_list_by_id('company_id',$coach_company_id,'','','pro_cont_id','DESC','project_contract');
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
     $this->load->view('Transaction/project_contract_list',$data);
@@ -369,18 +367,18 @@ class Transaction extends CI_Controller{
 
   //Add Stock
   public function project_contract(){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
 
     $this->form_validation->set_rules('project_service_type', 'Type', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $save_data = $_POST;
       unset($save_data['input']);
       unset($update_data['pro_cont_file_name']);
-      $save_data['company_id'] = $crm_company_id;
-      $save_data['pro_cont_addedby'] = $crm_user_id;
+      $save_data['company_id'] = $coach_company_id;
+      $save_data['pro_cont_addedby'] = $coach_user_id;
       $save_data['pro_cont_date2'] = date('d-m-Y');
       $save_data['pro_cont_time'] = date('h:i:s A');
       $pro_cont_id = $this->User_Model->save_data('project_contract', $save_data);
@@ -430,7 +428,7 @@ class Transaction extends CI_Controller{
       $this->session->set_flashdata('save_success','success');
       header('location:'.base_url().'Transaction/project_contract_list');
     }
-    $data['pro_cont_no'] = $this->User_Model->get_count_no($crm_company_id, 'pro_cont_no', 'project_contract');
+    $data['pro_cont_no'] = $this->User_Model->get_count_no($coach_company_id, 'pro_cont_no', 'project_contract');
     $data['contract_type_list'] = $this->User_Model->get_list_by_id('contract_type_status',1,'','','contract_type_id','ASC','contract_type');
     $data['party_list'] = $this->User_Model->get_list_by_id('party_status',1,'','','party_name','ASC','party');
     $data['pro_cont_status_list'] = $this->User_Model->get_list_by_id('pro_cont_status_status',1,'','','pro_cont_status_id','ASC','pro_cont_status');
@@ -447,17 +445,17 @@ class Transaction extends CI_Controller{
 
   //Add Stock
   public function edit_project_contract($pro_cont_id){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
 
     $this->form_validation->set_rules('project_service_type', 'Type', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $update_data = $_POST;
       unset($update_data['input']);
       unset($update_data['pro_cont_file_name']);
-      $update_data['pro_cont_addedby'] = $crm_user_id;
+      $update_data['pro_cont_addedby'] = $coach_user_id;
       $update_data['pro_cont_date2'] = date('d-m-Y');
       $update_data['pro_cont_time'] = date('h:i:s A');
       $this->User_Model->update_info('pro_cont_id', $pro_cont_id, 'project_contract', $update_data);
@@ -549,10 +547,10 @@ class Transaction extends CI_Controller{
 
   // Delete Project Contract....
   public function delete_project_contract($pro_cont_id){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
     $this->User_Model->delete_info('pro_cont_id', $pro_cont_id, 'project_contract');
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'Transaction/project_contract_list');
@@ -562,11 +560,11 @@ class Transaction extends CI_Controller{
 
   // Attendence List...
   public function attendence_list(){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
-    $data['attendence_list'] = $this->User_Model->get_list_by_id('company_id',$crm_company_id,'','','attendance_id','DESC','attendance');
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
+    $data['attendence_list'] = $this->User_Model->get_list_by_id('company_id',$coach_company_id,'','','attendance_id','DESC','attendance');
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
     $this->load->view('Transaction/attendence_list',$data);
@@ -575,16 +573,16 @@ class Transaction extends CI_Controller{
 
   //Add Attendence...
   public function attendence(){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
 
     $this->form_validation->set_rules('attendance_date', 'Type', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $save_data = $_POST;
-      $save_data['company_id'] = $crm_company_id;
-      $save_data['attendance_addedby'] = $crm_user_id;
+      $save_data['company_id'] = $coach_company_id;
+      $save_data['attendance_addedby'] = $coach_user_id;
       $save_data['attendance_date2'] = date('d-m-Y');
       $save_data['attendance_time2'] = date('h:i:s A');
       $this->User_Model->save_data('attendance', $save_data);
@@ -604,11 +602,11 @@ class Transaction extends CI_Controller{
 /******************************************* Receipt *****************************************/
   // Receipt List
   public function receipt_list(){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
-    $data['receipt_list'] = $this->User_Model->get_list_by_id('company_id',$crm_company_id,'','','receipt_id','DESC','receipt');
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
+    $data['receipt_list'] = $this->User_Model->get_list_by_id('company_id',$coach_company_id,'','','receipt_id','DESC','receipt');
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
     $this->load->view('Transaction/receipt_list',$data);
@@ -617,16 +615,16 @@ class Transaction extends CI_Controller{
 
   // Add / Save Receipt...
   public function receipt(){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
 
     $this->form_validation->set_rules('party_id', 'Type', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $save_data = $_POST;
-      $save_data['company_id'] = $crm_company_id;
-      $save_data['receipt_addedby'] = $crm_user_id;
+      $save_data['company_id'] = $coach_company_id;
+      $save_data['receipt_addedby'] = $coach_user_id;
       $save_data['receipt_date'] = date('d-m-Y');
       $save_data['receipt_time'] = date('h:i:s A');
       $this->User_Model->save_data('receipt', $save_data);
@@ -634,8 +632,8 @@ class Transaction extends CI_Controller{
       $this->session->set_flashdata('save_success','success');
       header('location:'.base_url().'Transaction/receipt_list');
     }
-    $data['receipt_no'] = $this->User_Model->get_count_no($crm_company_id, 'receipt_no', 'receipt');
-    $data['party_list'] = $this->User_Model->get_list_by_id('company_id',$crm_company_id,'','','party_name','ASC','party');
+    $data['receipt_no'] = $this->User_Model->get_count_no($coach_company_id, 'receipt_no', 'receipt');
+    $data['party_list'] = $this->User_Model->get_list_by_id('company_id',$coach_company_id,'','','party_name','ASC','party');
     $data['payment_mode_list'] = $this->User_Model->get_list_by_id('payment_mode_status',1,'','','payment_mode_id','ASC','payment_mode');
     $data['branch_list'] = $this->User_Model->get_list2('branch_id','ASC','branch');
     $this->load->view('Include/head', $data);
@@ -646,15 +644,15 @@ class Transaction extends CI_Controller{
 
   // Edit / Update Receipt...
   public function edit_receipt($receipt_id){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
 
     $this->form_validation->set_rules('party_id', 'Type', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $update_data = $_POST;
-      $update_data['receipt_addedby'] = $crm_user_id;
+      $update_data['receipt_addedby'] = $coach_user_id;
       $update_data['receipt_date'] = date('d-m-Y');
       $update_data['receipt_time'] = date('h:i:s A');
       $this->User_Model->update_info('receipt_id', $receipt_id, 'receipt', $update_data);
@@ -668,7 +666,7 @@ class Transaction extends CI_Controller{
     $data['receipt_info'] = $receipt_info[0];
     $data['update'] = 'update';
 
-    $data['party_list'] = $this->User_Model->get_list_by_id('company_id',$crm_company_id,'','','party_name','ASC','party');
+    $data['party_list'] = $this->User_Model->get_list_by_id('company_id',$coach_company_id,'','','party_name','ASC','party');
     $data['payment_mode_list'] = $this->User_Model->get_list_by_id('payment_mode_status',1,'','','payment_mode_id','ASC','payment_mode');
     $data['branch_list'] = $this->User_Model->get_list2('branch_id','ASC','branch');
     $this->load->view('Include/head', $data);
@@ -678,10 +676,10 @@ class Transaction extends CI_Controller{
   }
 
   public function delete_receipt($receipt_id){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
     $this->User_Model->delete_info('receipt_id', $receipt_id, 'receipt');
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'Transaction/receipt_list');
@@ -690,18 +688,18 @@ class Transaction extends CI_Controller{
 /*******************************************************************************************************/
 
   public function save_party(){
-    $crm_user_id = $this->session->userdata('crm_user_id');
-    $crm_company_id = $this->session->userdata('crm_company_id');
-    $crm_role_id = $this->session->userdata('crm_role_id');
-    if($crm_user_id == '' && $crm_company_id == ''){ header('location:'.base_url().'User'); }
+    $coach_user_id = $this->session->userdata('coach_user_id');
+    $coach_company_id = $this->session->userdata('coach_company_id');
+    $coach_role_id = $this->session->userdata('coach_role_id');
+    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
 
     $party_status = $_POST['party_status'];
     if(!isset($party_status)){ $party_status = 1; }
 
     $save_data = $_POST;
-    $save_data['company_id'] = $crm_company_id;
+    $save_data['company_id'] = $coach_company_id;
     $save_data['party_status'] = $party_status;
-    $save_data['party_addedby'] = $crm_user_id;
+    $save_data['party_addedby'] = $coach_user_id;
     $save_data['party_date'] = date('d-m-Y');
     $save_data['party_time'] = date('h:i:s A');
 

@@ -1,8 +1,8 @@
 <?php
-  $crm_user_id = $this->session->userdata('crm_user_id');
-  $crm_company_id = $this->session->userdata('crm_company_id');
-  $crm_role_id = $this->session->userdata('crm_role_id');
-  $company_info = $this->User_Model->get_info_arr_fields('company_name','company_id', $crm_company_id, 'company');
+  $coach_user_id = $this->session->userdata('coach_user_id');
+  $coach_company_id = $this->session->userdata('coach_company_id');
+  $coach_role_id = $this->session->userdata('coach_role_id');
+  $company_info = $this->Master_Model->get_info_arr_fields('company_name','company_id', $coach_company_id, 'company');
 ?>
 <head>
   <meta charset="utf-8">
