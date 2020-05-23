@@ -39,17 +39,39 @@
                   <form class="m-0 input_form" id="form_action" role="form" action="" method="post">
                     <div class="card-body row">
                       <div class="form-group col-md-6 select_sm">
+                        <label>Select Section Name</label>
+                        <select class="form-control select2" name="section_name" id="section_name" data-placeholder="Select Section Name">
+                          <option value="">Select Section</option>
+                          <option value="study">Study</option>
+                          <option value="grammer">Grammer</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group col-md-6 select_sm">
                         <label>Select medium Name</label>
                         <select class="form-control select2" name="medium_name" id="medium_name" data-placeholder="Select medium Name">
                           <option value="">Select medium Name</option>
                         </select>
                       </div>
 
-                      <div class="form-group col-md-6 select_sm">
+                      <div class="form-group col-md-6 select_sm" id="std_regular">
                         <label>Select Standard Name</label>
                         <select class="form-control select2" name="standard_name" id="standard_name" data-placeholder="Select Standard Name">
                           <option value="">Select Standard Name</option>
                         </select>
+                      </div>
+
+                      <div class="col-md-6" id="std_multiple">
+                        <div class="form-group">
+                          <label>Select Standard</label>
+                          <select class="select2" multiple="multiple" data-placeholder="Select Standard Name" style="width: 100%;">
+                            <option>1st</option>
+                            <option>2nd</option>
+                            <option>3rd</option>
+                            <option>All</option>
+                          </select>
+                        </div>
                       </div>
 
                       <div class="form-group col-md-6 select_sm">
@@ -59,14 +81,8 @@
                         </select>
                       </div>
 
-                      <div class="form-group col-md-6 select_sm">
-                        <label>Select Section Name</label>
-                        <select class="form-control select2" name="section_name" id="section_name" data-placeholder="Select Section Name">
-                          <option value="">Select Section Name</option>
-                        </select>
-                      </div>
 
-                      <div class="form-group col-md-6 select_sm">
+                      <div class="form-group col-md-6 select_sm" id="subsec">
                         <label>Select Subject Name</label>
                         <select class="form-control select2" name="subject_name" id="subject_name" data-placeholder="Select Subject Name">
                           <option value="">Select Subject Name</option>
@@ -174,4 +190,23 @@
   $('#myTable').on('click', '.rem_row', function () {
    $(this).closest('tr').remove();
  });
+  </script>
+
+  <script type="text/javascript">
+  $(function() {
+    $('#subsec').hide();
+    $('#std_multiple').hide();
+  $('#section_name').change(function(){
+    var section =$('#section_name').val();
+    if(section=='study'){
+    $('#subsec').show();
+    $('#std_multiple').hide();
+    $('#std_regular').show();
+  } else{
+    $('#subsec').hide();
+    $('#std_multiple').show();
+    $('#std_regular').hide();
+  }
+  });
+});
   </script>
