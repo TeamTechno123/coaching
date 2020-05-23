@@ -91,21 +91,21 @@
           </a>
           <ul class="nav nav-treeview" style="display: none;">
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>Master/batch_information" class="nav-link">
+              <a <?php if(isset($update_batch)){ echo 'href="'.$act_link.'"'; } else{ ?> href="<?php echo base_url(); ?>Master/batch_information" <?php } ?> class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Batch</p>
               </a>
             </li>
 
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>Master/medium_information" class="nav-link">
+              <a <?php if(isset($update_medium)){ echo 'href="'.$act_link.'"'; } else{ echo 'href="'.base_url().'Master/medium_information"'; }  ?> class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Medium</p>
               </a>
             </li>
 
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>Master/class_information" class="nav-link">
+              <a <?php if(isset($update_class)){ echo 'href="'.$act_link.'"'; } else{ echo 'href="'.base_url().'Master/class_information"'; }  ?> class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Class</p>
               </a>

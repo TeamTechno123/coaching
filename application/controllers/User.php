@@ -184,7 +184,7 @@ class User extends CI_Controller{
       $update_data['user_time'] = date('h:i:s A');
       $this->Master_Model->update_info('user_id', $user_id, 'user', $update_data);
 
-      $this->session->set_flashdata('save_success','success');
+      $this->session->set_flashdata('update_success','success');
       header('location:'.base_url().'User/user_information');
     }
 

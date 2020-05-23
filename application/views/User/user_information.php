@@ -64,7 +64,6 @@
                         } else{
                           echo '<button class="btn btn-sm btn-success float-right px-4">Save</button>';
                         } ?>
-
                       </div>
                     </div>
                   </div>
