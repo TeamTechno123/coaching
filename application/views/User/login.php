@@ -17,10 +17,10 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page "  >
 <div class="login-box">
-  <div class="login-logo">
-    <b>User Login</b>
+  <div class="login-logo ">
+    <b class="bg-light p-3">User Login</b>
   </div>
   <!-- /.login-logo -->
   <div class="card">
