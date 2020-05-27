@@ -31,116 +31,105 @@
         <h4 class="mb-3">Master Summary</h4>
         <div class="row">
           <!-- left column -->
-          <div class="col-md-4 col-6">
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>15</h3>
-                <p>New </p>
+          <div class="col-md-3 col-6">
+            <div class="info-box">
+                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-tachometer-alt"></i></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">Total Batch</span>
+                  <span class="info-box-number">
+                    15
+                  </span>
+                </div>
+                <!-- /.info-box-content -->
               </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Medium</span>
+                <span class="info-box-number">2</span>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <!-- /.info-box-content -->
             </div>
           </div>
-          <div class="col-md-4 col-6">
-            <div class="small-box bg-yellow">
-              <div class="inner">
-                <h3>10</h3>
-                <p>Qulifying</p>
+          <div class="col-md-3 col-6">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Download Content</span>
+                <span class="info-box-number">150</span>
               </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <!-- /.info-box-content -->
             </div>
           </div>
-          <div class="col-md-4 col-6">
-            <div class="small-box bg-green">
-              <div class="inner">
-                <h3>5</h3>
-                <p>Requirment Gathering</p>
+          <div class="col-md-3 col-6">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Student</span>
+                <span class="info-box-number">2,000</span>
               </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <div class="col-md-4 col-6">
-            <div class="small-box bg-red">
-              <div class="inner">
-                <h3>5</h3>
-                <p>Value Proposition</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <div class="col-md-4 col-6">
-            <div class="small-box bg-yellow">
-              <div class="inner">
-                <h3>5</h3>
-                <p>Negotition </p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <div class="col-md-4 col-6">
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>5</h3>
-                <p>Ready To Close</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <!-- /.info-box-content -->
             </div>
           </div>
 
-          <div class="col-md-4 col-6">
-            <div class="small-box bg-green">
-              <div class="inner">
-                <h3>5</h3>
-                <p>Closed Won</p>
+        </div>
+        <hr>
+
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-3 col-6">
+            <div class="info-box">
+                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-tachometer-alt"></i></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">Total Batch</span>
+                  <span class="info-box-number">
+                    15
+                  </span>
+                </div>
+                <!-- /.info-box-content -->
               </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Medium</span>
+                <span class="info-box-number">2</span>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <!-- /.info-box-content -->
             </div>
           </div>
-          <div class="col-md-4 col-6">
-            <div class="small-box bg-yellow">
-              <div class="inner">
-                <h3>5</h3>
-                <p>Closed Lost</p>
+          <div class="col-md-3 col-6">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Download Content</span>
+                <span class="info-box-number">150</span>
               </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
+              <!-- /.info-box-content -->
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Student</span>
+                <span class="info-box-number">2,000</span>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <!-- /.info-box-content -->
             </div>
           </div>
 
-          <div class="col-md-4 col-6">
-            <div class="small-box bg-red">
-              <div class="inner">
-                <h3>5</h3>
-                <p>Dormant</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
         </div>
         <hr>
 
