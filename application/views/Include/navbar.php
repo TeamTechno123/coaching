@@ -124,12 +124,15 @@
               <a <?php if(isset($update_subject)){ echo 'href="'.$act_link.'"'; } else{ echo 'href="'.base_url().'Master/subject"'; } ?> class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Subject</p>
+<<<<<<< HEAD
               </a>
             </li>
             <li class="nav-item">
               <a <?php if(isset($update_topic)){ echo 'href="'.$act_link.'"'; } else{ echo 'href="'.base_url().'Master/topic"'; } ?> class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Topic</p>
+=======
+>>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
               </a>
             </li>
             <!-- <li class="nav-item">
@@ -137,6 +140,7 @@
                 <i class="far fa-circle nav-icon"></i>
                 <p>Student List Report</p>
               </a>
+<<<<<<< HEAD
             </li> -->
 
             <!-- <li class="nav-item">
@@ -171,6 +175,25 @@
             <p>Receipt</p>
           </a>
         </li>
+=======
+            </li>
+
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>Master/topic_information" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Topic</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>Master/topic_content" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Topic Content</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+>>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
 
       </nav>
     <!-- /.sidebar-menu -->

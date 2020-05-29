@@ -82,6 +82,7 @@
       toastr.error('Information Deleted successfully');
     });
   <?php } ?>
+<<<<<<< HEAD
   <?php if($this->session->flashdata('upload_success')){ ?>
     $(document).ready(function(){
       toastr.success('File Uploaded Successfully');
@@ -92,6 +93,8 @@
       toastr.error('File Not Uploaded');
     });
   <?php } ?>
+=======
+>>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
 </script>
 
 
