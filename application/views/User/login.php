@@ -28,7 +28,7 @@
       <p class="login-box-msg">Sign in to start your session</p>
       <form method="post" action="">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+          <input type="number" min="5000000000" max="9999999999" class="form-control" name="mobile" id="mobile" placeholder="Mobile Number" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>

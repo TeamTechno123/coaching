@@ -94,13 +94,13 @@
                     <label>Enter IEC Code No.</label>
                     <input type="text" class="form-control form-control-sm" name="company_iec_no" id="company_iec_no" value="<?php if(isset($company_iec_no)){ echo $company_iec_no; } ?>" placeholder="Enter IEC Code No.">
                   </div>
-                  <div class="form-group col-md-6">
+                  <!-- <div class="form-group col-md-6">
                     <label>Company Logo</label>
                     <input type="file" name="company_logo" value="">
-                    </div>
-                    <div class="col-md-6">
+                  </div>
+                  <div class="col-md-6">
 
-                    </div>
+                  </div> -->
                   <!-- <div class="form-group col-md-6">
                     <label>Admin Email Id</label>
                     <input type="email" class="form-control form-control-sm" name="company_email" id="company_email" value="<?php if(isset($company_email)){ echo $company_email; } ?>" placeholder="Email" required>

@@ -1,9 +1,9 @@
 <?php
-  $crm_user_id = $this->session->userdata('crm_user_id');
-  $crm_company_id = $this->session->userdata('crm_company_id');
-  $crm_role_id = $this->session->userdata('crm_role_id');
-  $company_info = $this->User_Model->get_info_arr_fields('company_name','company_id', $crm_company_id, 'company');
-  $user_info = $this->User_Model->get_info_arr_fields('user_name','user_id', $crm_user_id, 'user');
+  $coach_user_id = $this->session->userdata('coach_user_id');
+  $coach_company_id = $this->session->userdata('coach_company_id');
+  $coach_role_id = $this->session->userdata('coach_role_id');
+  $company_info = $this->Master_Model->get_info_arr_fields('company_name','company_id', $coach_company_id, 'company');
+  $user_info = $this->Master_Model->get_info_arr_fields('user_name','user_id', $coach_user_id, 'user');
 ?>
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
   <!-- Left navbar links -->
@@ -72,60 +72,18 @@
                 <p>Company Information</p>
               </a>
             </li>
-            <!-- <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/branch_information_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Branch Information</p>
-              </a>
-            </li>
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/service_information_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Service Information</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/unit_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Unit</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/party_information_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Party / Vendor</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/service_contract_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Service Contract</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/group_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Group Information</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/user_list" class="nav-link">
+              <a <?php if(isset($update_user)){ echo 'href="'.$act_link.'"'; } else{ ?> href="<?php echo base_url(); ?>User/user_information" <?php } ?> class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>User Information</p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/issue_information_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Issue Information</p>
-              </a>
-            </li> -->
           </ul>
         </li>
 
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link head">
-            <i class="nav-icon fas fa-chart-pie"></i>
+            <i class="nav-icon fas fa-list"></i>
             <p>
               Master
               <i class="right fas fa-angle-left"></i>
@@ -133,80 +91,86 @@
           </a>
           <ul class="nav nav-treeview" style="display: none;">
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>Master/batch_information" class="nav-link">
+              <a <?php if(isset($update_batch)){ echo 'href="'.$act_link.'"'; } else{ ?> href="<?php echo base_url(); ?>Master/batch_information" <?php } ?> class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Batch Information</p>
+                <p>Batch</p>
               </a>
             </li>
-
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>Master/medium_information" class="nav-link">
+              <a <?php if(isset($update_medium)){ echo 'href="'.$act_link.'"'; } else{ echo 'href="'.base_url().'Master/medium_information"'; }  ?> class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Medium Information</p>
+                <p>Medium</p>
               </a>
             </li>
-
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>Master/class_information" class="nav-link">
+              <a <?php if(isset($update_class)){ echo 'href="'.$act_link.'"'; } else{ echo 'href="'.base_url().'Master/class_information"'; }  ?> class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Class Information</p>
+                <p>Class</p>
               </a>
             </li>
-
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>Master/student_information" class="nav-link">
+              <a <?php if(isset($update_student)){ echo 'href="'.$act_link.'"'; } else{ echo 'href="'.base_url().'Master/student_information"'; }  ?> class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Student Information</p>
+                <p>Student</p>
               </a>
             </li>
-
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>Master/receipt_information" class="nav-link">
+            <!-- <li class="nav-item">
+              <a <?php if(isset($update_receipt)){ echo 'href="'.$act_link.'"'; } else{ echo 'href="'.base_url().'Master/receipt"'; } ?> class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Receipt Information</p>
+                <p>Receipt</p>
+              </a>
+            </li> -->
+            <li class="nav-item">
+              <a <?php if(isset($update_subject)){ echo 'href="'.$act_link.'"'; } else{ echo 'href="'.base_url().'Master/subject"'; } ?> class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Subject</p>
               </a>
             </li>
-
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>Master/subject_information" class="nav-link">
+              <a <?php if(isset($update_topic)){ echo 'href="'.$act_link.'"'; } else{ echo 'href="'.base_url().'Master/topic"'; } ?> class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Subject Information</p>
+                <p>Topic</p>
               </a>
             </li>
-
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>Master/user_information" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>User Information</p>
-              </a>
-            </li>
-
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="<?php echo base_url(); ?>Master/student_report" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Student List Report</p>
               </a>
-            </li>
+            </li> -->
 
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>Master/topic_content" class="nav-link">
+            <!-- <li class="nav-item">
+              <a href="<?php echo base_url(); ?>Master/download" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Topic Content Information</p>
+                <p>Topic Download</p>
               </a>
-            </li>
-
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>Master/topic_information" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Topic Information</p>
-              </a>
-            </li>
-
+            </li> -->
           </ul>
         </li>
-
-
-
+        <li class="nav-item">
+          <a <?php if(isset($update_download_content)){ echo 'href="'.$act_link.'"'; } else{ echo 'href="'.base_url().'Master/download_content"'; } ?> class="nav-link">
+            <i class="nav-icon fas fa-download"></i>
+            <p>Download Content</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?php echo base_url(); ?>Master/student_report" class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+            <p>Student List Report</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?php echo base_url(); ?>Master/topic_report" class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+            <p>Topic List Report</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a <?php if(isset($update_receipt)){ echo 'href="'.$act_link.'"'; } else{ echo 'href="'.base_url().'Master/receipt"'; } ?> class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+            <p>Receipt</p>
+          </a>
+        </li>
 
       </nav>
     <!-- /.sidebar-menu -->

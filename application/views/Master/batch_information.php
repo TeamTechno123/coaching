@@ -34,26 +34,31 @@
               <div class="col-md-5">
                 <div class="card card-default">
                   <div class="card-header">
-                    <h5 class="card-title f-16"> Add New Batch</h5>
+                    <h5 class="card-title f-16"> <?php if(isset($update)){ echo 'Update'; } else{ echo 'Add New'; } ?> Batch</h5>
                   </div>
-                  <form class="m-0 input_form" id="form_action" role="form" action="" method="post">
+                  <form class="m-0 input_form" id="form_action" role="form" action="" method="post" autocomplete="off">
                     <div class="card-body row">
                       <div class="form-group col-md-12">
                         <label>Enter Batch Name</label>
-                        <input type="text" class="form-control form-control-sm" name="batch_name" id="batch_name" value="" placeholder="Enter Batch Name" required>
+                        <input type="text" class="form-control form-control-sm" name="batch_name" id="batch_name" value="<?php if(isset($batch_info)){ echo $batch_info['batch_name']; } ?>" value="" placeholder="Enter Batch Name" required>
                       </div>
 
                       <div class="col-md-12">
                         <div class="form-group ">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox">
-                            <label class="form-check-label">Disable This</label>
+                          <div class="custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox" name="batch_status" id="batch_status" value="0" <?php if(isset($batch_info) && $batch_info['batch_status'] == 0){ echo 'checked'; } ?>>
+                            <label for="batch_status" class="custom-control-label">Disable This</label>
                           </div>
                         </div>
                       </div>
-                      <div class="form-group col-md-12 text-right m-0">
-                          <button id="btn_save" type="submit" class="btn btn-sm btn-success px-4">Add</button>
-                      </div>
+                    </div>
+                    <div class="card-footer form-group col-md-12 text-right m-0">
+                      <a href="<?php base_url(); ?>Master/batch_information" class="btn btn-sm btn-default px-4 mx-4">Cancel</a>
+                      <?php if(isset($update)){
+                        echo '<button class="btn btn-sm btn-primary float-right px-4">Update</button>';
+                      } else{
+                        echo '<button class="btn btn-sm btn-success float-right px-4">Add</button>';
+                      } ?>
                     </div>
                   </form>
                 </div>
@@ -74,18 +79,18 @@
                       </tr>
                       </thead>
                       <tbody>
-
+                        <?php $i=0; foreach ($batch_list as $list) { $i++; ?>
                           <tr>
-                            <td style="display:none;"></td>
-                            <td>asdf</td>
-                            <td>
+                            <td style="display:none;"><?php echo $i; ?></td>
+                            <td><?php echo $list->batch_name; ?></td>
+                            <td class="text-center">
                               <div class="btn-group">
-                                <a href="<?php echo base_url(); ?>Master/edit_education_level/" class="btn btn-sm btn-default"><i class="fa fa-edit text-primary"></i></a>
-                                <a href="<?php echo base_url(); ?>Master/delete_education_level/" class="btn btn-sm btn-default" onclick="return confirm('Delete this Education Level');" ><i class="fa fa-trash text-danger"></i></a>
+                                <a href="<?php echo base_url(); ?>Master/edit_batch/<?php echo $list->batch_id; ?>" class="btn btn-sm btn-default"><i class="fa fa-edit text-primary"></i></a>
+                                <a href="<?php echo base_url(); ?>Master/delete_batch/<?php echo $list->batch_id; ?>" class="btn btn-sm btn-default" onclick="return confirm('Delete this Batch');" ><i class="fa fa-trash text-danger"></i></a>
                               </div>
                             </td>
                           </tr>
-
+                        <?php } ?>
                       </tbody>
                     </table>
                   </div>
@@ -93,34 +98,10 @@
               </div>
             </div>
             <!-- // Education Level -->
-
-
-
           </div>
         </div>
       </div>
     </section>
   </div>
-
 </body>
 </html>
-
-<script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
-<script type="text/javascript">
-  <?php if($this->session->flashdata('save_success')){ ?>
-    $(document).ready(function(){
-      toastr.success('Saved successfully');
-    });
-  <?php } ?>
-  <?php if($this->session->flashdata('update_success')){ ?>
-    $(document).ready(function(){
-      toastr.info('Updated successfully');
-    });
-  <?php } ?>
-  <?php if($this->session->flashdata('delete_success')){ ?>
-    $(document).ready(function(){
-      toastr.error('Deleted successfully');
-    });
-  <?php } ?>
-</script>

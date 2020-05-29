@@ -1,8 +1,8 @@
 <?php
-  $crm_user_id = $this->session->userdata('crm_user_id');
-  $crm_company_id = $this->session->userdata('crm_company_id');
-  $crm_role_id = $this->session->userdata('crm_role_id');
-  $company_info = $this->User_Model->get_info_arr_fields('company_name','company_id', $crm_company_id, 'company');
+  $coach_user_id = $this->session->userdata('coach_user_id');
+  $coach_company_id = $this->session->userdata('coach_company_id');
+  $coach_role_id = $this->session->userdata('coach_role_id');
+  $company_info = $this->Master_Model->get_info_arr_fields('company_name','company_id', $coach_company_id, 'company');
 ?>
 <footer class="main-footer">
   <strong>Copyright &copy;<?php echo date('Y'); ?>-<?php echo date('Y')+1; ?> <a href="<?php echo base_url(); ?>"><?php echo $company_info[0]['company_name']; ?></a>.</strong>
@@ -63,6 +63,36 @@
 <script src="<?php echo base_url(); ?>assets/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
+
+<script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
+<script type="text/javascript">
+  <?php if($this->session->flashdata('save_success')){ ?>
+    $(document).ready(function(){
+      toastr.success('Information Saved successfully');
+    });
+  <?php } ?>
+  <?php if($this->session->flashdata('update_success')){ ?>
+    $(document).ready(function(){
+      toastr.info('Information Updated successfully');
+    });
+  <?php } ?>
+  <?php if($this->session->flashdata('delete_success')){ ?>
+    $(document).ready(function(){
+      toastr.error('Information Deleted successfully');
+    });
+  <?php } ?>
+  <?php if($this->session->flashdata('upload_success')){ ?>
+    $(document).ready(function(){
+      toastr.success('File Uploaded Successfully');
+    });
+  <?php } ?>
+  <?php if($this->session->flashdata('upload_fail')){ ?>
+    $(document).ready(function(){
+      toastr.error('File Not Uploaded');
+    });
+  <?php } ?>
+</script>
 
 
 

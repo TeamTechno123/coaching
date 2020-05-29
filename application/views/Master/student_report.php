@@ -27,79 +27,81 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-            <div class="card collapsed-card">
-              <div class="card-header border-transparent">
+            <div class="card">
+              <div class="card-header">
                 <h3 class="card-title">Filter</h3>
-                <div class="card-tools">
+                <!-- <div class="card-tools">
                   <button type="button" class="btn btn-sm btn-primary" data-card-widget="collapse">Hide / Show </button>
-                </div>
+                </div> -->
               </div>
               <!--  -->
-                <div class="card-body p-0" style="display: none;">
+                <div class="card-body p-0">
                   <form class="input_form m-0" id="form_action" role="form" action="" method="post">
-                    <div class="row px-3">
+                    <div class="row p-4">
                       <div class="col-md-10">
                         <div class="row">
                           <div class="form-group col-md-3 select_sm">
                             <label>Select Acadamic Year</label>
-                            <select class="form-control select2" name="acadamic_year" id="acadamic_year" data-placeholder=" Select Acadamic Year">
-                              <option value=""> Select Acadamic Year</option>
+                            <select class="form-control select2" name="academic_year_id" id="academic_year_id" data-placeholder="Select Academic Year">
+                              <option value="">Select Academic Year</option>
+                              <?php foreach ($academic_year_list as $academic_year_list1) { ?>
+                                <option value="<?php echo $academic_year_list1->academic_year_id; ?>" <?php if(isset($student_info) && $student_info['academic_year_id'] == $academic_year_list1->academic_year_id){ echo 'selected'; } ?>><?php echo $academic_year_list1->academic_year_title; ?></option>
+                              <?php } ?>
                             </select>
                           </div>
-
                           <div class="form-group col-md-3 select_sm">
                             <label>Select Medium</label>
-                            <select class="form-control select2" name="medium" id="medium" data-placeholder=" Select Medium">
-                              <option value=""> Select Medium</option>
+                            <select class="form-control select2" name="medium_id" id="medium_id" data-placeholder="Select Medium">
+                              <option value="">Select Medium</option>
+                              <?php foreach ($medium_list as $medium_list1) { ?>
+                                <option value="<?php echo $medium_list1->medium_id; ?>" <?php if(isset($student_info) && $student_info['medium_id'] == $medium_list1->medium_id){ echo 'selected'; } ?>><?php echo $medium_list1->medium_name; ?></option>
+                              <?php } ?>
                             </select>
                           </div>
-
-
                           <div class="form-group col-md-3 select_sm">
-                            <label>Select Standard</label>
-                            <select class="form-control select2" name="standard" id="standard" data-placeholder=" Select Standard">
-                              <option value=""> Select Standard</option>
+                            <label>Select Class</label>
+                            <select class="form-control select2" name="class_id" id="class_id" data-placeholder="Select Class">
+                              <option value="">Select Class</option>
+                              <!-- <?php if(isset($class_list)){
+                                 foreach ($class_list as $class_list1) { ?>
+                                <option value="<?php echo $class_list1->class_id; ?>" <?php if(isset($student_info) && $student_info['class_id'] == $class_list1->class_id){ echo 'selected'; } ?>><?php echo $class_list1->class_name; ?></option>
+                              <?php } } ?> -->
                             </select>
                           </div>
-
                           <div class="form-group col-md-3 select_sm">
                             <label>Select Batch</label>
-                            <select class="form-control select2" name="Batch" id="Batch" data-placeholder=" Select Batch">
-                              <option value=""> Select Batch</option>
+                            <select class="form-control select2" name="batch_id" id="batch_id" data-placeholder="Select Batch">
+                              <option value="">Select Batch</option>
+                              <?php foreach ($batch_list as $batch_list1) { ?>
+                                <option value="<?php echo $batch_list1->batch_id; ?>" <?php if(isset($student_info) && $student_info['batch_id'] == $batch_list1->batch_id){ echo 'selected'; } ?>><?php echo $batch_list1->batch_name; ?></option>
+                              <?php } ?>
                             </select>
                           </div>
-
                         </div>
                       </div>
-
                       <div class="col-md-2">
                         <div class="form-group col-md-2 text-right mt-4">
                           <button id="btn_save" type="submit" class="btn btn-sm btn-primary px-4">Get</button>
                         </div>
                       </div>
-
-                      </div>
-
+                    </div>
                   </form>
                 </div>
             </div>
           </div>
 
           <div class="col-md-12">
-
             <!-- Education Level -->
             <div class="row">
-
               <div class="col-md-12">
                 <div class="card card-default">
                   <div class="card-header">
-                    <h5 class="card-title f-16">List All Student Report</h5>
+                    <h5 class="card-title f-16">List Student Report</h5>
                   </div>
                   <div class="card-body pt-0">
-
                     <div class="row mt-3">
                       <div class="col-md-3">
-                        <p>Acadamic Year :2020-21</p>
+                        <p>Acadamic Year : 2020-21</p>
                       </div>
                       <div class="col-md-3">
                         <p>Medium name : English</p>
@@ -111,40 +113,30 @@
                           <p>Batch Name : Morning </p>
                       </div>
                     </div>
-
                     <table id="example2" class="table table-striped">
                       <thead>
-                      <tr>
-                        <th style="display:none;">#</th>
-                        <th>Student Name</th>
-                        <th>Mobile No.</th>
-                        <th>Total Fees</th>
-                        <th>Advance Fees</th>
-                        <th>Total Received Fees</th>
-                        <th>Balance Fees </th>
-                        <th>Status</th>
-                        <th class="wt_50">Action</th>
-                      </tr>
+                        <tr>
+                          <th style="display:none;">#</th>
+                          <th>Student Name</th>
+                          <th>Mobile No.</th>
+                          <th>Total Fees</th>
+                          <th>Advance Fees</th>
+                          <th>Total Received Fees</th>
+                          <th>Balance Fees </th>
+                          <th>Status</th>
+                        </tr>
                       </thead>
                       <tbody>
-
-                          <tr>
-                            <td style="display:none;"></td>
-                            <td>asdf</td>
-                            <td>asdf</td>
-                            <td>asdf</td>
-                            <td>asdf</td>
-                            <td>asdf</td>
-                            <td>asdf</td>
-                            <td>asdf</td>
-                            <td>
-                              <div class="btn-group">
-                                <a href="<?php echo base_url(); ?>Master/edit_education_level/" class="btn btn-sm btn-default"><i class="fa fa-edit text-primary"></i></a>
-                                <a href="<?php echo base_url(); ?>Master/delete_education_level/" class="btn btn-sm btn-default" onclick="return confirm('Delete this Education Level');" ><i class="fa fa-trash text-danger"></i></a>
-                              </div>
-                            </td>
-                          </tr>
-
+                        <tr>
+                          <td style="display:none;"></td>
+                          <td>asdf</td>
+                          <td>asdf</td>
+                          <td>asdf</td>
+                          <td>asdf</td>
+                          <td>asdf</td>
+                          <td>asdf</td>
+                          <td>asdf</td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
@@ -152,9 +144,6 @@
               </div>
             </div>
             <!-- // Education Level -->
-
-
-
           </div>
         </div>
       </div>
@@ -164,22 +153,17 @@
 </body>
 </html>
 
-<script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
 <script type="text/javascript">
-  <?php if($this->session->flashdata('save_success')){ ?>
-    $(document).ready(function(){
-      toastr.success('Saved successfully');
+  $("#medium_id").on("change", function(){
+    var medium_id =  $('#medium_id').find("option:selected").val();
+    $.ajax({
+      url:'<?php echo base_url(); ?>Transaction/get_class_by_medium',
+      type: 'POST',
+      data: {"medium_id":medium_id},
+      context: this,
+      success: function(result){
+        $('#class_id').html(result);
+      }
     });
-  <?php } ?>
-  <?php if($this->session->flashdata('update_success')){ ?>
-    $(document).ready(function(){
-      toastr.info('Updated successfully');
-    });
-  <?php } ?>
-  <?php if($this->session->flashdata('delete_success')){ ?>
-    $(document).ready(function(){
-      toastr.error('Deleted successfully');
-    });
-  <?php } ?>
+  });
 </script>
