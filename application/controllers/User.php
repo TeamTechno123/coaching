@@ -36,11 +36,7 @@ class User extends CI_Controller{
           $this->session->set_userdata('coach_user_id', $login[0]['user_id']);
           $this->session->set_userdata('coach_company_id', $login[0]['company_id']);
           $this->session->set_userdata('coach_role_id', $login[0]['role_id']);
-<<<<<<< HEAD
           // $this->session->set_userdata('branch_id', $login[0]['branch_id']);
-=======
-          $this->session->set_userdata('branch_id', $login[0]['branch_id']);
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
           header('location:'.base_url().'User/dashboard');
         }
       }
@@ -56,7 +52,6 @@ class User extends CI_Controller{
     $coach_company_id = $this->session->userdata('coach_company_id');
     $coach_role_id = $this->session->userdata('coach_role_id');
     if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
-<<<<<<< HEAD
     $company_id = '';
 
     $data['medium_cnt'] = $this->Master_Model->get_count('medium_id', $company_id,'','','','','','','medium');
@@ -72,12 +67,6 @@ class User extends CI_Controller{
     $this->load->view('Include/navbar', $data);
     $this->load->view('User/dashboard', $data);
     $this->load->view('Include/footer', $data);
-=======
-    $this->load->view('Include/head');
-    $this->load->view('Include/navbar');
-    $this->load->view('User/dashboard');
-    $this->load->view('Include/footer');
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
   }
 
 /**************************      Company Information      ********************************/
@@ -107,25 +96,7 @@ class User extends CI_Controller{
     $this->form_validation->set_rules('company_address', 'company_address', 'trim|required');
 
     if ($this->form_validation->run() != FALSE) {
-<<<<<<< HEAD
       $up_data = $_POST;
-=======
-      $up_data = array(
-        'company_name' => $this->input->post('company_name'),
-        'company_address' => $this->input->post('company_address'),
-        'country_id' => $this->input->post('country_id'),
-        'state_id' => $this->input->post('state_id'),
-        'company_statecode' => $this->input->post('company_statecode'),
-        'company_mob1' => $this->input->post('company_mob1'),
-        'company_mob2' => $this->input->post('company_mob2'),
-        'company_email' => $this->input->post('company_email'),
-        'company_website' => $this->input->post('company_website'),
-        'company_pan_no' => $this->input->post('company_pan_no'),
-        'company_gst_no' => $this->input->post('company_gst_no'),
-        'company_cin_no' => $this->input->post('company_cin_no'),
-        'company_iec_no' => $this->input->post('company_iec_no'),
-      );
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
       $this->Master_Model->update_info('company_id', $company_id, 'company', $up_data);
       $this->session->set_flashdata('update_success','success');
       header('location:'.base_url().'User/company_information_list');
@@ -134,7 +105,6 @@ class User extends CI_Controller{
     $data['country_list'] = $this->Master_Model->get_list('','country_name','ASC','country');
     $data['state_list'] = $this->Master_Model->get_list('','state_name','ASC','state');
     $data['district_list'] = $this->Master_Model->get_list('','district_name','ASC','district');
-<<<<<<< HEAD
 
     // $company_info = $this->Master_Model->get_info_arr('company_id',$company_id,'company');
     // if(!$company_info){ header('location:'.base_url().'User/company_information_list'); }
@@ -144,8 +114,6 @@ class User extends CI_Controller{
     // $data['act_link'] = base_url().'User/edit_company/'.$company_id;
 
 
-=======
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     if($company_info){
       foreach($company_info as $info){
         $data['update'] = 'update';

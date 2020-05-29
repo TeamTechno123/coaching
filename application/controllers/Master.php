@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-<<<<<<< HEAD
   class Master extends CI_Controller{
     public function __construct(){
       parent::__construct();
@@ -20,23 +19,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $coach_role_id = $this->session->userdata('coach_role_id');
     if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
 
-=======
-class Master extends CI_Controller{
-  public function __construct(){
-    parent::__construct();
-    date_default_timezone_set('Asia/Kolkata');
-  }
-
-/********************************** Batch *************************************/
-
-  // Save Batch....
-  public function batch_information(){
-    $coach_user_id = $this->session->userdata('coach_user_id');
-    $coach_company_id = $this->session->userdata('coach_company_id');
-    $coach_role_id = $this->session->userdata('coach_role_id');
-    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
-
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $this->form_validation->set_rules('batch_name', 'Batch Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $batch_status = $this->input->post('batch_status');
@@ -186,7 +168,6 @@ class Master extends CI_Controller{
     header('location:'.base_url().'Master/medium_information');
   }
 
-<<<<<<< HEAD
 
 /*************************************** Class ****************************/
 
@@ -223,53 +204,11 @@ class Master extends CI_Controller{
 
   // Edit/Update Class...
   public function edit_class($class_id){
-=======
-
-/*************************************** Class ****************************/
-
-  // Save Class...
-  public function class_information(){
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
-    $coach_user_id = $this->session->userdata('coach_user_id');
-    $coach_company_id = $this->session->userdata('coach_company_id');
-    $coach_role_id = $this->session->userdata('coach_role_id');
-    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
-<<<<<<< HEAD
-
-=======
-
-    $this->form_validation->set_rules('class_name', 'Batch Name', 'trim|required');
-    if ($this->form_validation->run() != FALSE) {
-      $class_status = $this->input->post('class_status');
-      if(!isset($class_status)){ $class_status = '1'; }
-      $save_data = $_POST;
-      $save_data['class_status'] = $class_status;
-      $save_data['company_id'] = $coach_company_id;
-      $save_data['class_addedby'] = $coach_user_id;
-      $save_data['class_date'] = date('d-m-Y');
-      $save_data['class_time'] = date('h:i:s A');
-      $class_id = $this->Master_Model->save_data('class', $save_data);
-
-      $this->session->set_flashdata('save_success','success');
-      header('location:'.base_url().'Master/class_information');
-    }
-    $data['medium_list'] = $this->Master_Model->get_list_by_id3($coach_company_id,'medium_status','1','','','','','medium_id','ASC','medium');
-    $data['class_list'] = $this->Master_Model->get_list_by_id3($coach_company_id,'','','','','','','class_id','DESC','class');
-
-    $this->load->view('Include/head', $data);
-    $this->load->view('Include/navbar', $data);
-    $this->load->view('Master/class_information', $data);
-    $this->load->view('Include/footer', $data);
-  }
-
-  // Edit/Update Class...
-  public function edit_class($class_id){
     $coach_user_id = $this->session->userdata('coach_user_id');
     $coach_company_id = $this->session->userdata('coach_company_id');
     $coach_role_id = $this->session->userdata('coach_role_id');
     if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
 
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $this->form_validation->set_rules('class_name', 'Batch Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $class_status = $this->input->post('class_status');
@@ -311,15 +250,10 @@ class Master extends CI_Controller{
     header('location:'.base_url().'Master/class_information');
   }
 
-<<<<<<< HEAD
 /************************************ Student ********************************/
 
   // Add Student...
   public function student_information(){
-=======
-/************************************* Receipt *********************************/
-  public function receipt_information(){
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $coach_user_id = $this->session->userdata('coach_user_id');
     $coach_company_id = $this->session->userdata('coach_company_id');
     $coach_role_id = $this->session->userdata('coach_role_id');
@@ -355,11 +289,7 @@ class Master extends CI_Controller{
   }
 
   // Edit/Update Education Level...
-<<<<<<< HEAD
   public function edit_student($student_id){
-=======
-  public function edit_receipt_information($receipt_information_id){
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $coach_user_id = $this->session->userdata('coach_user_id');
     $coach_company_id = $this->session->userdata('coach_company_id');
     $coach_role_id = $this->session->userdata('coach_role_id');
@@ -401,34 +331,18 @@ class Master extends CI_Controller{
   }
 
   //Delete Education Level...
-<<<<<<< HEAD
   public function delete_student($student_id){
-=======
-  public function delete_receipt_information($receipt_information_id){
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $coach_user_id = $this->session->userdata('coach_user_id');
     $coach_company_id = $this->session->userdata('coach_company_id');
     $coach_role_id = $this->session->userdata('coach_role_id');
     if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
-<<<<<<< HEAD
     $this->Master_Model->delete_info('student_id', $student_id, 'student');
-=======
-    $this->Master_Model->delete_info('receipt_information_id', $receipt_information_id, 'receipt_information');
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'Master/student_information');
   }
 
 
-<<<<<<< HEAD
 /************************************ Subject **********************************/
-=======
-  public function student_information(){
-    $coach_user_id = $this->session->userdata('coach_user_id');
-    $coach_company_id = $this->session->userdata('coach_company_id');
-    $coach_role_id = $this->session->userdata('coach_role_id');
-    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
 
   // Add Subject...
   public function subject(){
@@ -487,11 +401,7 @@ class Master extends CI_Controller{
   }
 
   // Edit/Update Education Level...
-<<<<<<< HEAD
   public function edit_subject($subject_id){
-=======
-  public function edit_student_information($student_information_id){
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $coach_user_id = $this->session->userdata('coach_user_id');
     $coach_company_id = $this->session->userdata('coach_company_id');
     $coach_role_id = $this->session->userdata('coach_role_id');
@@ -557,33 +467,17 @@ class Master extends CI_Controller{
   }
 
   //Delete Education Level...
-<<<<<<< HEAD
   public function delete_subject($subject_id){
-=======
-  public function delete_student_information($student_information_id){
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $coach_user_id = $this->session->userdata('coach_user_id');
     $coach_company_id = $this->session->userdata('coach_company_id');
     $coach_role_id = $this->session->userdata('coach_role_id');
     if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
-<<<<<<< HEAD
     $this->Master_Model->delete_info('subject_id', $subject_id, 'subject');
-=======
-    $this->Master_Model->delete_info('student_information_id', $student_information_id, 'student_information');
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'Master/subject');
   }
 
-<<<<<<< HEAD
 /************************************* Receipt *********************************/
-=======
-  public function subject_information(){
-    $coach_user_id = $this->session->userdata('coach_user_id');
-    $coach_company_id = $this->session->userdata('coach_company_id');
-    $coach_role_id = $this->session->userdata('coach_role_id');
-    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
 
   // Add Receipt...
   public function receipt(){
@@ -622,13 +516,8 @@ class Master extends CI_Controller{
     $this->load->view('Include/footer', $data);
   }
 
-<<<<<<< HEAD
   // Edit/Update Receipt...
   public function edit_receipt($receipt_id){
-=======
-  // Edit/Update Education Level...
-  public function edit_subject_information($subject_information_id){
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $coach_user_id = $this->session->userdata('coach_user_id');
     $coach_company_id = $this->session->userdata('coach_company_id');
     $coach_role_id = $this->session->userdata('coach_role_id');
@@ -670,27 +559,17 @@ class Master extends CI_Controller{
     $this->load->view('Include/footer', $data);
   }
 
-<<<<<<< HEAD
   //Delete Receipt...
   public function delete_receipt($receipt_id){
-=======
-  //Delete Education Level...
-  public function delete_subject_information($subject_information_id){
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $coach_user_id = $this->session->userdata('coach_user_id');
     $coach_company_id = $this->session->userdata('coach_company_id');
     $coach_role_id = $this->session->userdata('coach_role_id');
     if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
-<<<<<<< HEAD
     $this->Master_Model->delete_info('receipt_id', $receipt_id, 'receipt');
-=======
-    $this->Master_Model->delete_info('subject_information_id', $subject_information_id, 'subject_information');
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'Master/receipt');
   }
 
-<<<<<<< HEAD
 /******************************************** Topic *********************************/
 
   // Add Topic...
@@ -783,15 +662,6 @@ class Master extends CI_Controller{
     header('location:'.base_url().'Master/topic');
   }
 
-=======
-
-
-  public function student_report(){
-    $coach_user_id = $this->session->userdata('coach_user_id');
-    $coach_company_id = $this->session->userdata('coach_company_id');
-    $coach_role_id = $this->session->userdata('coach_role_id');
-    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
 
 /*********************** Topic Content ************************/
   // Add Topic...
@@ -860,22 +730,14 @@ class Master extends CI_Controller{
     $this->load->view('Include/footer', $data);
   }
 
-<<<<<<< HEAD
   public function edit_topic_content($topic_content_id){
-=======
-  // Edit/Update Education Level...
-  public function edit_student_report($student_report_id){
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $coach_user_id = $this->session->userdata('coach_user_id');
     $coach_company_id = $this->session->userdata('coach_company_id');
     $coach_role_id = $this->session->userdata('coach_role_id');
     if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
-<<<<<<< HEAD
     $topic_details = $this->Master_Model->get_info_arr_fields('topic_id','topic_content_id', $topic_content_id, 'topic_content');
     if(!$topic_details){ header('location:'.base_url().'Master/topic'); }
     $topic_id = $topic_details[0]['topic_id'];
-=======
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
 
     $this->form_validation->set_rules('topic_content_pub_date', 'Date', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
@@ -942,39 +804,26 @@ class Master extends CI_Controller{
     $this->load->view('Include/footer', $data);
   }
 
-<<<<<<< HEAD
   //Delete Topic...
   public function delete_topic_content($topic_content_id){
-=======
-  //Delete Education Level...
-  public function delete_student_report($student_report_id){
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $coach_user_id = $this->session->userdata('coach_user_id');
     $coach_company_id = $this->session->userdata('coach_company_id');
     $coach_role_id = $this->session->userdata('coach_role_id');
     if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
-<<<<<<< HEAD
     $topic_containt_details = $this->Master_Model->get_info_arr('topic_content_id',$topic_content_id,'topic_content');
     if(!$topic_containt_details){ header('location:'.base_url().'Master/topic'); }
     $topic_id = $topic_containt_details[0]['topic_id'];
     $topic_content_file = $topic_containt_details[0]['topic_content_file'];
     if($topic_content_file){ unlink("assets/uploads/topic_content/".$topic_content_file); }
     $this->Master_Model->delete_info('topic_content_id', $topic_content_id, 'topic_content');
-=======
-    $this->Master_Model->delete_info('student_report_id', $student_report_id, 'student_report');
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'Master/topic_content/'.$topic_id);
   }
 
 
-<<<<<<< HEAD
 /*********************** Download Content ************************/
   // Add Download Content......
   public function download_content(){
-=======
-  public function topic_content(){
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $coach_user_id = $this->session->userdata('coach_user_id');
     $coach_company_id = $this->session->userdata('coach_company_id');
     $coach_role_id = $this->session->userdata('coach_role_id');
@@ -1027,15 +876,6 @@ class Master extends CI_Controller{
     $this->load->view('Include/footer', $data);
   }
 
-<<<<<<< HEAD
-=======
-  // Edit/Update Education Level...
-  public function edit_topic_content($topic_content_id){
-    $coach_user_id = $this->session->userdata('coach_user_id');
-    $coach_company_id = $this->session->userdata('coach_company_id');
-    $coach_role_id = $this->session->userdata('coach_role_id');
-    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
 
   //Edit/Update Download Content...
   public function edit_download_content($download_content_id){
@@ -1105,39 +945,22 @@ class Master extends CI_Controller{
     $this->load->view('Include/footer', $data);
   }
 
-<<<<<<< HEAD
   //Delete Download Content...
   public function delete_download_content($download_content_id){
-=======
-  //Delete Education Level...
-  public function delete_topic_content($topic_content_id){
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $coach_user_id = $this->session->userdata('coach_user_id');
     $coach_company_id = $this->session->userdata('coach_company_id');
     $coach_role_id = $this->session->userdata('coach_role_id');
     if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
-<<<<<<< HEAD
     $download_containt_details = $this->Master_Model->get_info_arr('download_content_id',$download_content_id,'download_content');
     if(!$download_containt_details){ header('location:'.base_url().'Master/download'); }
     $download_content_file = $download_containt_details[0]['download_content_file'];
     if($download_content_file){ unlink("assets/uploads/download_content/".$download_content_file); }
     $this->Master_Model->delete_info('download_content_id', $download_content_id, 'download_content');
-=======
-    $this->Master_Model->delete_info('topic_content_id', $topic_content_id, 'topic_content');
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'Master/download_content');
   }
 
-<<<<<<< HEAD
 /************************************* Student Report *****************************/
-=======
-  public function topic_information(){
-    $coach_user_id = $this->session->userdata('coach_user_id');
-    $coach_company_id = $this->session->userdata('coach_company_id');
-    $coach_role_id = $this->session->userdata('coach_role_id');
-    if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
 
   public function student_report(){
     $coach_user_id = $this->session->userdata('coach_user_id');
@@ -1169,11 +992,7 @@ class Master extends CI_Controller{
   }
 
   // Edit/Update Education Level...
-<<<<<<< HEAD
   public function edit_student_report($student_report_id){
-=======
-  public function edit_topic_information($topic_information_id){
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $coach_user_id = $this->session->userdata('coach_user_id');
     $coach_company_id = $this->session->userdata('coach_company_id');
     $coach_role_id = $this->session->userdata('coach_role_id');
@@ -1186,33 +1005,17 @@ class Master extends CI_Controller{
   }
 
   //Delete Education Level...
-<<<<<<< HEAD
   public function delete_student_report($student_report_id){
-=======
-  public function delete_topic_information($topic_information_id){
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $coach_user_id = $this->session->userdata('coach_user_id');
     $coach_company_id = $this->session->userdata('coach_company_id');
     $coach_role_id = $this->session->userdata('coach_role_id');
     if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
-<<<<<<< HEAD
     $this->Master_Model->delete_info('student_report_id', $student_report_id, 'student_report');
-=======
-    $this->Master_Model->delete_info('topic_information_id', $topic_information_id, 'topic_information');
->>>>>>> 3ab86c9854ec9494972f12ca9a352944c2e77457
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'Master/student_report');
   }
 
-/*******************************  Check Duplication  ****************************/
-  public function check_duplication(){
-    $column_name = $this->input->post('column_name');
-    $column_val = $this->input->post('column_val');
-    $table_name = $this->input->post('table_name');
-    $company_id = '';
-    $cnt = $this->Master_Model->check_duplication($company_id,$column_val,$column_name,$table_name);
-    echo $cnt;
-  }
+
 
   /************************************* Student Report *****************************/
 
