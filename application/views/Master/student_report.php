@@ -117,6 +117,7 @@
                       <thead>
                         <tr>
                           <th style="display:none;">#</th>
+                          <th class="wt_50">Action</th>
                           <th>Student Name</th>
                           <th>Mobile No.</th>
                           <th>Total Fees</th>
@@ -141,6 +142,12 @@
                         <tr>
                           <?php //echo print_r($student_list).'<br><br>'; ?>
                           <!-- <td> <?php echo $i; ?></td> -->
+                          <td class="text-center">
+                            <div class="btn-group">
+                              <a href="<?php echo base_url() ?>Master/edit_student/<?php echo $student_list->student_id; ?>" type="button" class="btn btn-sm btn-default"><i class="fa fa-edit text-primary"></i></a>
+                              <a href="<?php echo base_url() ?>Master/delete_student/<?php echo $student_list->student_id; ?>" type="button" class="btn btn-sm btn-default" onclick="return confirm('Delete this Student');"><i class="fa fa-trash text-danger"></i></a>
+                            </div>
+                          </td>
                           <td><?php echo $student_list->student_name; ?></td>
                           <td><?php echo $student_list->student_mobile; ?></td>
                           <td><?php echo $student_list->student_tot_fees; ?></td>

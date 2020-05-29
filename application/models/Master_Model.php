@@ -282,7 +282,7 @@ $this->db->join('batch','topic.batch_id = batch.batch_id','LEFT');
   $query = $this->db->get();
   $result = $query->result();
   return $result;
-      }
+}
 
 
 }
