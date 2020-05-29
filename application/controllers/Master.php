@@ -974,9 +974,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $medium_id = $this->input->post('medium_id');
       $class_id = $this->input->post('class_id');
       $batch_id = $this->input->post('batch_id');
+      $data['student_list'] = $this->Master_Model->student_report_list($academic_year_id,$medium_id,$class_id,$batch_id);
+    }
 
-
-    } else{
+    else{
       $data['student_list'] = $this->Master_Model->get_list_by_id2($coach_company_id,'','','','','student_id','ASC','student');
     }
 
@@ -1025,23 +1026,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $coach_role_id = $this->session->userdata('coach_role_id');
       if($coach_user_id == '' && $coach_company_id == ''){ header('location:'.base_url().'User'); }
 
-      $this->form_validation->set_rules('academic_year_id', 'Academic Year', 'trim|required');
-      if ($this->form_validation->run() != FALSE) {
-        // $academic_year_id = $this->input->post('academic_year_id');
-        $medium_id = $this->input->post('medium_id');
+        $this->form_validation->set_rules('section_id', 'Academic Year', 'trim|required');
+        if ($this->form_validation->run() != FALSE) {
         $section_id = $this->input->post('section_id');
+        $medium_id = $this->input->post('medium_id');
         $class_id = $this->input->post('class_id');
-        $batch_id = $this->input->post('batch_id');
+        $subject_id = $this->input->post('subject_id');
+        $data['topic_list'] = $this->Master_Model->topic_report_list($section_id,$medium_id,$class_id,$subject_id);
+      
       } else{
-        $data['topic_list'] = $this->Master_Model->get_list_by_id2($coach_company_id,'','','','','topic_id','ASC','topic');
+        $data['topic_list'] = $this->Master_Model->topic_report_list_all($coach_company_id);
         }
-
-      // $data['academic_year_list'] = $this->Master_Model->get_list_by_id2($coach_company_id,'academic_year_status',1,'','','academic_year_id','ASC','academic_year');
       $data['medium_list'] = $this->Master_Model->get_list_by_id2($coach_company_id,'medium_status',1,'','','medium_id','ASC','medium');
       $data['section_list'] = $this->Master_Model->get_list_by_id2($coach_company_id,'section_status',1,'','','section_id','ASC','section');
-      // $data['class_list'] = $this->Master_Model->get_list_by_id2($coach_company_id,'class_status',1,'','','class_id','ASC','class');
       $data['batch_list'] = $this->Master_Model->get_list_by_id2($coach_company_id,'batch_status',1,'','','batch_id','ASC','batch');
       $data['section_list'] = $this->Master_Model->get_list_by_id2($coach_company_id,'section_status',1,'','','section_id','ASC','section');
+      $data['subject_list'] = $this->Master_Model->get_list_by_id2($coach_company_id,'','','','','subject_id','ASC','subject');
 
       $this->load->view('Include/head', $data);
       $this->load->view('Include/navbar', $data);

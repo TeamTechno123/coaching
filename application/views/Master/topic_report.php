@@ -62,18 +62,18 @@
                             <label>Select Standard</label>
                             <select class="form-control select2" name="class_id" id="class_id" data-placeholder="Select Standard">
                               <option value="">Select Standard</option>
-                              <!-- <?php if(isset($class_list)){
+                              <?php if(isset($class_list)){
                                  foreach ($class_list as $class_list1) { ?>
                                 <option value="<?php echo $class_list1->class_id; ?>" <?php if(isset($student_info) && $student_info['class_id'] == $class_list1->class_id){ echo 'selected'; } ?>><?php echo $class_list1->class_name; ?></option>
-                              <?php } } ?> -->
+                              <?php } } ?>
                             </select>
                           </div>
                           <div class="form-group col-md-3 select_sm">
                             <label>Select Subject</label>
-                            <select class="form-control select2" name="batch_id" id="batch_id" data-placeholder="Select Subject">
+                            <select class="form-control select2" name="subject_id" id="subject_id" data-placeholder="Select Subject">
                               <option value="">Select Subject</option>
-                              <?php foreach ($batch_list as $batch_list1) { ?>
-                                <option value="<?php echo $batch_list1->batch_id; ?>" <?php if(isset($student_info) && $student_info['batch_id'] == $batch_list1->batch_id){ echo 'selected'; } ?>><?php echo $batch_list1->batch_name; ?></option>
+                              <?php foreach ($subject_list as $subject_list1) { ?>
+                                <option value="<?php echo $subject_list1->subject_id; ?>" <?php if(isset($student_info) && $student_info['subject_id'] == $subject_list1->batch_id){ echo 'selected'; } ?>><?php echo $subject_list1->subject_name; ?></option>
                               <?php } ?>
                             </select>
                           </div>
@@ -115,40 +115,33 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <?php $i=0; foreach ($topic_list as $list) { $i++;
-                          $medium_details = $this->Master_Model->get_info_arr_fields('medium_name','medium_id', $list->medium_id, 'medium');
-                          // $class_details = $this->Master_Model->get_info_arr_fields('class_name','class_id', $list->class_id, 'class');
-                          $section_details = $this->Master_Model->get_info_arr_fields('section_name','section_id', $list->section_id, 'section');
-                          $batch_details = $this->Master_Model->get_info_arr_fields('batch_name','batch_id', $list->batch_id, 'batch');
-
-
-                            $str_arr = explode (",", $list->class_id);
-                            $class_name = '';
-                            foreach ($str_arr as $class_id) {
-                              $class_details = $this->Master_Model->get_info_arr_fields('class_name','class_id', $class_id, 'class');
-                              if($class_details){
-                                $class_name .= $class_details[0]['class_name'].', ';
-                              }
-                            }
-
-
-                        ?>
+                        <?php $i = 0;
+                        foreach ($topic_list as $topic_list) {
+                          $i++;
+                          $status = $topic_list->topic_status;
+                          if($status=='1'){
+                            $stat='Active';
+                          }
+                          else{
+                            $stat='Inctive';
+                          }
+                          ?>
                         <tr>
-                          <td class="d-none"><?php echo $i; ?></td>
+                          <?php //echo print_r($topic_list).'<br><br>'; ?>
                           <td class="text-center">
                             <div class="btn-group">
-                              <a href="<?php echo base_url() ?>Master/edit_topic/<?php echo $list->topic_id; ?>" type="button" class="btn btn-sm btn-default"><i class="fa fa-edit text-primary"></i></a>
-                              <a href="<?php echo base_url() ?>Master/delete_topic/<?php echo $list->topic_id; ?>" type="button" class="btn btn-sm btn-default" onclick="return confirm('Delete this Subject');"><i class="fa fa-trash text-danger"></i></a>
+                              <a href="<?php echo base_url() ?>Master/edit_topic/<?php echo $topic_list->topic_id; ?>" type="button" class="btn btn-sm btn-default"><i class="fa fa-edit text-primary"></i></a>
+                              <a href="<?php echo base_url() ?>Master/delete_topic/<?php echo $topic_list->topic_id; ?>" type="button" class="btn btn-sm btn-default" onclick="return confirm('Delete this Subject');"><i class="fa fa-trash text-danger"></i></a>
                             </div>
                           </td>
-                          <td><?php echo $list->topic_name; ?></td>
-                          <td><?php if($medium_details){ echo $medium_details[0]['medium_name']; } ?></td>
-                          <td><?php echo $class_name; ?></td>
-                          <td><?php if($section_details){ echo $section_details[0]['section_name']; } ?></td>
-                          <td><?php if($batch_details){ echo $batch_details[0]['batch_name']; } ?></td>
-                          <td><a href="<?php echo base_url() ?>Master/topic_content/<?php echo $list->topic_id; ?>" type="button" class="btn btn-sm btn-info">Add</td>
-                          <!-- <td><a href="<?php echo base_url() ?>Master/download_content/<?php echo $list->topic_id; ?>" type="button" class="btn btn-sm btn-info">Add</td> -->
-                        </tr>
+                          <td><?php echo $topic_list->topic_name; ?></td>
+                          <td><?php echo $topic_list->medium_name; ?></td>
+                          <td><?php echo $topic_list->class_name; ?></td>
+                          <td><?php echo $topic_list->section_name; ?></td>
+                          <td><?php echo $topic_list->batch_name; ?></td>
+                          <!-- <td><?php echo $topic_list->topic_adv_amt; ?></td> -->
+                          <td><?php echo $stat; ?></td>
+                          </tr>
                       <?php } ?>
                       </tbody>
                     </table>
@@ -176,6 +169,21 @@
       context: this,
       success: function(result){
         $('#class_id').html(result);
+      }
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $("#class_id").on("change", function(){
+    var class_id =  $('#class_id').find("option:selected").val();
+    $.ajax({
+      url:'<?php echo base_url(); ?>Transaction/get_subject_by_class',
+      type: 'POST',
+      data: {"class_id":class_id},
+      context: this,
+      success: function(result){
+        $('#subject_id').html(result);
       }
     });
   });

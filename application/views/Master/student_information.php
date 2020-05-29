@@ -99,11 +99,11 @@
                       </div>
                       <div class="form-group col-md-6 select_sm">
                         <label>Enter Total Fees</label>
-                        <input type="number" class="form-control form-control-sm" name="student_tot_fees" id="student_tot_fees" value="<?php if(isset($student_info)){ echo $student_info['student_tot_fees']; } ?>"  placeholder="Enter Total Fees" required >
+                        <input type="number" class="form-control form-control-sm" name="student_tot_fees" id="student_tot_fees" value="<?php if(isset($student_info)){ echo $student_info['student_tot_fees']; } ?>"  placeholder="Enter Total Fees"  >
                       </div>
                       <div class="form-group col-md-6">
                         <label>Advance Amount</label>
-                        <input type="number" class="form-control form-control-sm" name="student_adv_amt" id="student_adv_amt" value="<?php if(isset($student_info)){ echo $student_info['student_adv_amt']; } ?>"  placeholder="Advance Amount" Required >
+                        <input type="number" class="form-control form-control-sm" name="student_adv_amt" id="student_adv_amt" value="<?php if(isset($student_info)){ echo $student_info['student_adv_amt']; } ?>"  placeholder="Advance Amount"  >
                       </div>
                     </div>
                     <div class="card-footer clearfix" style="display: block;">

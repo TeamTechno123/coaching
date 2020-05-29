@@ -127,16 +127,29 @@
                         </tr>
                       </thead>
                       <tbody>
+                        <?php $i = 0;
+                        foreach ($student_list as $student_list) {
+                          $i++;
+                          $status = $student_list->student_status;
+                          if($status=='1'){
+                            $stat='Active';
+                          }
+                          else{
+                            $stat='Inctive';
+                          }
+                          ?>
                         <tr>
-                          <td style="display:none;"></td>
-                          <td>asdf</td>
-                          <td>asdf</td>
-                          <td>asdf</td>
-                          <td>asdf</td>
-                          <td>asdf</td>
-                          <td>asdf</td>
-                          <td>asdf</td>
-                        </tr>
+                          <?php //echo print_r($student_list).'<br><br>'; ?>
+                          <!-- <td> <?php echo $i; ?></td> -->
+                          <td><?php echo $student_list->student_name; ?></td>
+                          <td><?php echo $student_list->student_mobile; ?></td>
+                          <td><?php echo $student_list->student_tot_fees; ?></td>
+                          <td><?php echo $student_list->student_adv_amt; ?></td>
+                          <td><?php echo $student_list->student_adv_amt; ?></td>
+                          <td></td>
+                          <td><?php echo $stat; ?></td>
+                          </tr>
+                      <?php } ?>
                       </tbody>
                     </table>
                   </div>
